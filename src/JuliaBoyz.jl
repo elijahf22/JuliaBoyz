@@ -1,5 +1,9 @@
 module JuliaBoyz
 
-# Write your package code here.
+
+"A test function to see how the documenter works."
+function useless_test()
+    return nothing
+end
 
 end
