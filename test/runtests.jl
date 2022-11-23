@@ -1,5 +1,7 @@
 using JuliaBoyz
 using Test
+using Aqua
+using HashCode2014
 
 @testset "JuliaBoyz.jl" begin
     city_long = HashCode2014.read_city()
