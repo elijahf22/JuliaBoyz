@@ -6,10 +6,11 @@ using SparseArrays
 # Stores the city data
 city = HashCode2014.read_city()
 
+
 """
 Generates an adjacency matrix for the junctions of the currently loaded city to represent the graph.
 """
-function generate_adjacency_matrix()
+function generate_adjacency_matrix(city)
 
     # Stores the duration/distance sparse matrix vectors
     starts = cat([street.endpointA for street in city.streets], [street.endpointB for street in city.streets if street.bidirectional]; dims=1)
@@ -24,10 +25,11 @@ function generate_adjacency_matrix()
     return (durations, distances)
 end
 
+
 """
 Generates an adjacency list for the junctions of the currently loaded city to represent the graph.
 """
-function generate_adjacency_list()
+function generate_adjacency_list(city)
 
     # Stores templates for lists
     neighbors = Dict(vert => Vector{Int64}() for vert in 1:length(city.junctions))
@@ -43,11 +45,12 @@ function generate_adjacency_list()
     return neighbors
 end
 
+
 """
 Perhaps best of both worlds? Stores the street, and therefore, both the adjacent junctions 
 and the properties of the street.
 """
-function get_adjacent_streets()
+function get_adjacent_streets(city)
 
     # Stores templates for lists
     neighbors = Dict{Int64, Vector{Street}}()
@@ -68,6 +71,7 @@ function get_adjacent_streets()
     return neighbors
 end
 
+
 """
 Uses a greedy algorithm to generate itineraries for the cars in the currently loaded city.
     
@@ -77,12 +81,12 @@ current node. After traversing a street, add it to a list of already traversed s
  If a street has already been traversed, we skip it, and go to the next one in the adjacency list.
 If all adjacent streets from a node are already traveresd, choose a random one.
 """
-function generate_greedy_random_solution()
+function generate_greedy_random_solution(city)
 
     # Stores values for the function
     start_point = city.starting_junction
     itinerary = [[start_point] for car in 1:city.nb_cars]
-    neighbor_streets = get_adjacent_streets()
+    neighbor_streets = get_adjacent_streets(city)
     visited_streets = Set{Street}()
 
     # Runs each car
@@ -130,11 +134,12 @@ function generate_greedy_random_solution()
     return itinerary
 end
 
+
 """
 Naively generates an upper bound on the possible distance by sorting all available streets by 
 duration to distance ratio, and adding until all time is used up, or all streets are traversed.
 """
-function generate_upper_bound()
+function generate_upper_bound(city)
     streets = sort(city.streets; by=street -> street.duration/street.distance)
     time = 0
     dist = 0
