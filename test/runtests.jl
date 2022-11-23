@@ -2,11 +2,12 @@ using JuliaBoyz
 using Test
 using Aqua
 using HashCode2014
+using Accessors
 
 @testset "JuliaBoyz.jl" begin
     city_long = HashCode2014.read_city()
     city_short = HashCode2014.read_city()
-    city_short.total_duration = 18000
+    @set city_short.total_duration = 18000
     
     solution1 = JuliaBoyz.generate_greedy_random_solution(city_long)
     upper_long = JuliaBoyz.generate_upper_bound(city_long)
