@@ -2,11 +2,6 @@ module JuliaBoyz
 using HashCode2014
 using SparseArrays
 
-
-# Stores the city data
-city = HashCode2014.read_city()
-
-
 """
 Generates an adjacency matrix for the junctions of the currently loaded city to represent the graph.
 """
@@ -137,14 +132,15 @@ end
 
 """
 Naively generates an upper bound on the possible distance by sorting all available streets by 
-duration to distance ratio, and adding until all time is used up, or all streets are traversed.
+duration to distance ratio, and adding until all time is used up (across all cars), or all 
+streets are traversed.
 """
 function generate_upper_bound(city)
     streets = sort(city.streets; by=street -> street.duration/street.distance)
     time = 0
     dist = 0
     for street in streets
-        if time < 8 * city.total_duration
+        if time < city.nb_cars * city.total_duration
             time += street.duration
             dist += street.distance
         else
