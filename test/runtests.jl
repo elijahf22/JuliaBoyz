@@ -9,9 +9,9 @@ using Accessors
     city_short = HashCode2014.read_city()
     @set city_short.total_duration = 18000
     
-    solution1 = JuliaBoyz.generate_greedy_random_solution(city_long)
+    solution1 = Solution(JuliaBoyz.generate_greedy_random_solution(city_long))
     upper_long = JuliaBoyz.generate_upper_bound(city_long)
-    solution2 = JuliaBoyz.generate_greedy_random_solution(city_short)
+    solution2 = Solution(JuliaBoyz.generate_greedy_random_solution(city_short))
     upper_short = JuliaBoyz.generate_upper_bound(city_short)
     
     @test HashCode2014.is_feasible(solution1, city_long)
