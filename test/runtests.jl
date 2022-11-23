@@ -21,9 +21,13 @@ using Accessors
     @test HashCode2014.total_distance(solution1, city_long) <= upper_long
     @test HashCode2014.total_distance(solution2, city_short) <= upper_short
     
+    print("54000s distance: ")
     println(HashCode2014.total_distance(solution1, city_long))
+    print("54000s upper bound: ")
     println(upper_long)
+    print("18000s distance: ")
     println(HashCode2014.total_distance(solution2, city_short))
+    print("18000s upper bound: ")
     println(upper_short)
     
 end
