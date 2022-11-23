@@ -6,7 +6,6 @@ using SparseArrays
 # Stores the city data
 city = HashCode2014.read_city()
 
-
 """
 Generates an adjacency matrix for the junctions of the currently loaded city to represent the graph.
 """
@@ -44,7 +43,10 @@ function generate_adjacency_list()
     return neighbors
 end
 
-# Perhaps best of both worlds? Stores the street, and therefore, both the adjacent junctions and the properties of the street
+"""
+Perhaps best of both worlds? Stores the street, and therefore, both the adjacent junctions 
+and the properties of the street.
+"""
 function get_adjacent_streets()
 
     # Stores templates for lists
@@ -66,6 +68,9 @@ function get_adjacent_streets()
     return neighbors
 end
 
+"""
+Uses a greedy algorithm to generate itineraries for the cars.  >>>ADD MORE DESCRIPTION<<<
+"""
 function generate_greedy_random_solution()
 
     # Stores values for the function
@@ -119,6 +124,10 @@ function generate_greedy_random_solution()
     return itinerary
 end
 
+"""
+Naively generates an upper bound on the possible distance by sorting all available streets by 
+duration to distance ratio, and adding until all time is used up, or all streets are traversed.
+"""
 function generate_upper_bound()
     streets = sort(city.streets; by=street -> street.duration/street.distance)
     time = 0
@@ -141,12 +150,12 @@ end
 # generate_greedy_random_solution()
 # println(generate_greedy_random_solution())
 
-println(city.total_duration)
-solu = Solution(generate_greedy_random_solution())
-println(HashCode2014.total_distance(solu, city))
-println(HashCode2014.is_feasible(solu, city; verbose=true))
-HashCode2014.plot_streets(city, solu; path="testsol")
-println(generate_upper_bound())
+# println(city.total_duration)
+# solu = Solution(generate_greedy_random_solution())
+# println(HashCode2014.total_distance(solu, city))
+# println(HashCode2014.is_feasible(solu, city; verbose=true))
+# HashCode2014.plot_streets(city, solu; path="testsol")
+# println(generate_upper_bound())
 
 
 end
