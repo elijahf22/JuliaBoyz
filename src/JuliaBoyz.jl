@@ -120,7 +120,18 @@ function generate_greedy_random_solution()
 end
 
 function generate_upper_bound()
-    return 0
+    streets = sort(city.streets; by=street -> street.duration/street.distance)
+    time = 0
+    dist = 0
+    for street in streets
+        if time < 8 * city.total_duration
+            time += street.duration
+            dist += street.distance
+        else
+            break
+        end
+    end
+    return dist
 end
 
 # POSSIBLE IMPROVEMENTS:
@@ -130,11 +141,12 @@ end
 # generate_greedy_random_solution()
 # println(generate_greedy_random_solution())
 
-# println(city.total_duration)
-# solu = Solution(generate_greedy_random_solution())
-# println(HashCode2014.total_distance(solu, city))
-# println(HashCode2014.is_feasible(solu, city; verbose=true))
-# HashCode2014.plot_streets(city, solu; path="testsol")
+println(city.total_duration)
+solu = Solution(generate_greedy_random_solution())
+println(HashCode2014.total_distance(solu, city))
+println(HashCode2014.is_feasible(solu, city; verbose=true))
+HashCode2014.plot_streets(city, solu; path="testsol")
+println(generate_upper_bound())
 
 
 end
