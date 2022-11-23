@@ -69,7 +69,13 @@ function get_adjacent_streets()
 end
 
 """
-Uses a greedy algorithm to generate itineraries for the cars.  >>>ADD MORE DESCRIPTION<<<
+Uses a greedy algorithm to generate itineraries for the cars in the currently loaded city.
+    
+For each car, we look at the adjacency lists of the current node and choose the one with the highest
+distance to duration ratio, which is done by choosing the first street in the adjacency list of the 
+current node. After traversing a street, add it to a list of already traversed streets.
+ If a street has already been traversed, we skip it, and go to the next one in the adjacency list.
+If all adjacent streets from a node are already traveresd, choose a random one.
 """
 function generate_greedy_random_solution()
 
@@ -151,10 +157,15 @@ end
 # println(generate_greedy_random_solution())
 
 # println(city.total_duration)
+# before = time_ns()
 # solu = Solution(generate_greedy_random_solution())
+# after = time_ns()
+# print("Computation time: ")
+# println((after-before)*(10^(-9)))
 # println(HashCode2014.total_distance(solu, city))
 # println(HashCode2014.is_feasible(solu, city; verbose=true))
-# HashCode2014.plot_streets(city, solu; path="testsol")
+# HashCode2014.write_solution(solu, "sol.txt")
+# HashCode2014.plot_streets(city, solu; path="testsol.html")
 # println(generate_upper_bound())
 
 
