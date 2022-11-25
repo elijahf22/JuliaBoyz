@@ -9,9 +9,11 @@ using Test
 
 @testset verbose = true "JuliaBoyz.jl" begin
 
+    #=
     @testset verbose = true "Code quality (Aqua.jl)" begin
-        Aqua.test_all(JuliaBoyz; ambiguities=false, stale_deps=false)
+        Aqua.test_all(JuliaBoyz; ambiguities=false)
     end
+    =#
 
     @testset verbose = true "Code formatting (JuliaFormatter.jl)" begin
         @test format(JuliaBoyz; verbose=true, overwrite=false)
