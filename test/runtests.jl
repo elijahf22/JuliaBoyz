@@ -8,15 +8,15 @@ using Accessors
 @testset verbose = true "JuliaBoyz.jl" begin
 
     @testset verbose = true "Code quality (Aqua.jl)" begin
-        Aqua.test_all(MyJuliaPackage; ambiguities=false)
+        Aqua.test_all(JuliaBoyz; ambiguities=false)
     end
 
     @testset verbose = true "Code formatting (JuliaFormatter.jl)" begin
-        @test format(MyJuliaPackage; verbose=true, overwrite=false)
+        @test format(JuliaBoyz; verbose=true, overwrite=false)
     end
 
     @testset verbose = true "Doctests (Documenter.jl)" begin
-        doctest(MyJuliaPackage)
+        doctest(JuliaBoyz)
     end
 
     @testset verbose = true "JuliaBoyz.jl" begin
