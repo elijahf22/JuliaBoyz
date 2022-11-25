@@ -1,8 +1,10 @@
-using JuliaBoyz
-using Test
-using Aqua
-using HashCode2014
 using Accessors
+using Aqua
+using Documenter
+using HashCode2014
+using JuliaBoyz
+using JuliaFormatter
+using Test
 
 
 @testset verbose = true "JuliaBoyz.jl" begin
