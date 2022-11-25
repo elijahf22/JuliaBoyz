@@ -8,7 +8,7 @@ using Accessors
 @testset verbose = true "JuliaBoyz.jl" begin
 
     @testset verbose = true "Code quality (Aqua.jl)" begin
-        Aqua.test_all(JuliaBoyz; ambiguities=false)
+        Aqua.test_all(JuliaBoyz; ambiguities=false, stale_deps=false)
     end
 
     @testset verbose = true "Code formatting (JuliaFormatter.jl)" begin
