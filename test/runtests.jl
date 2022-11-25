@@ -13,7 +13,6 @@ using Test
     @testset verbose = true "Code quality (Aqua.jl)" begin
         Aqua.test_all(JuliaBoyz; ambiguities=false)
     end
-    =#
 
     @testset verbose = true "Code formatting (JuliaFormatter.jl)" begin
         @test format(JuliaBoyz; verbose=true, overwrite=false)
@@ -22,6 +21,7 @@ using Test
     @testset verbose = true "Doctests (Documenter.jl)" begin
         doctest(JuliaBoyz)
     end
+    =#
 
     @testset verbose = true "JuliaBoyz.jl" begin
         city_long = HashCode2014.read_city()
