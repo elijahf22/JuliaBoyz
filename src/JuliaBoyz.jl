@@ -152,7 +152,12 @@ function generate_upper_bound(city)
     return dist
 end
 
-function greedy_dfs_solution()
+"""
+Generates an itinerary for cars based on traversing through the graph via DFS while maintain the cars' traversal constraints. Every time a backtrack is done,
+    the algorithm finds the shortest path from the end of the old branch to the beginning of the new branch, and traverses it. Stops when all the cars have
+    reached their maximum duration traveled.
+"""
+function greedy_dfs_solution(city)
 
     # Stores values for the function
     visited_streets = Set{Street}()
@@ -209,9 +214,4 @@ function greedy_dfs_solution()
     end
 
     return itinerary
-end
-
-
-
-
 end
