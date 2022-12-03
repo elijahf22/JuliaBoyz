@@ -2,8 +2,6 @@ module JuliaBoyz
 
 using HashCode2014
 using SparseArrays
-using StreetGraph
-using GraphUpperBound
 using DataStructures
 include("check_sol.jl")
 include("graph_representation.jl")
