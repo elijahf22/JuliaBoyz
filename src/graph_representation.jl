@@ -1,6 +1,3 @@
-using HashCode2014
-using SparseArrays
-
 """
 Generates an adjacency matrix for the junctions of the currently loaded city to represent the graph.
 Returns a `Tuple` of two sparse matrices containing all the durations and distances, respectively, of streets between a starting junction (rows) and an ending junction (columns).
