@@ -28,22 +28,23 @@ using Test
         city_short = @set city_long.total_duration = 18000
         
         long_start = time_ns()
-        solution1 = Solution(JuliaBoyz.generate_greedy_random_solution(city_long))
-        upper_long = JuliaBoyz.generate_upper_bound(city_long)
+        solution1 = JuliaBoyz.greedy_dfs_solution(city_long)
+        upper_long = JuliaBoyz.generate_upper_bound(solution1.city)
         long_end = time_ns()
         long_time = (long_end - long_start)/10^9
 
         short_start = time_ns()
-        solution2 = Solution(JuliaBoyz.generate_greedy_random_solution(city_short))
-        upper_short = JuliaBoyz.generate_upper_bound(city_short)
+        solution2 = JuliaBoyz.greedy_dfs_solution(city_short)
+        upper_short = JuliaBoyz.generate_upper_bound(solution2.city)
         short_end = time_ns()
         short_time = (short_end - short_start) / 10^9
 
-        @test HashCode2014.is_feasible(solution1, city_long)
-        @test HashCode2014.is_feasible(solution2, city_short)
+        @test JuliaBoyz.check_solution(solution1)
+        @test JuliaBoyz.solution_distance(solution1)
+        @test JuliaBoyz.check_solution(solution2)
         @test upper_long > 0
         @test upper_short > 0
-        @test HashCode2014.total_distance(solution1, city_long) <= upper_long
+        @test JuliaBoyz.total_distance(solution1, city_long) <= upper_long
         @test HashCode2014.total_distance(solution2, city_short) <= upper_short
         
         print("54000s distance: ")
