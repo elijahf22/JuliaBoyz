@@ -1,6 +1,6 @@
 using Aqua
 using Documenter
-using Main.JuliaBoyz
+using JuliaBoyz
 using JuliaFormatter
 using Test
 
