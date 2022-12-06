@@ -1,4 +1,5 @@
 """
+    check_sol(sol::JBSolution)
 Given a city and a potential solution, checks the validity of the solution.
     
 Works by beginning at the first junction in an itinerary and check if the next junction 

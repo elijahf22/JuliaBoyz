@@ -1,8 +1,9 @@
 """
+    read_city(filename::String)
 Given the path for a file containing a text file of a problem in the specified format,
 creates a `JBCity` instance with the relevant information. 
 """
-function read_city(filename)
+function read_city(filename::String)
     lines = readlines(filename)
     num_junctions, num_streets, total_time, fleet_size, start = parse.(
         Int, convert(Vector{String}, split(lines[1]))

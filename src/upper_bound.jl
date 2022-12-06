@@ -1,4 +1,5 @@
 """
+    generate_upper_bound(city::JBCity)
 Naively generates an upper bound on the possible distance by sorting all available streets by 
 duration to distance ratio, and adding until all time is used up (across all cars), or all 
 streets are traversed.

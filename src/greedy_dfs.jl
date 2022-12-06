@@ -1,5 +1,9 @@
 """
-ADD DOCSTRING
+    greedy_dfs_solution(city::JBCity)
+Given a problem instance (as a `JBCity`), returns a `JBSolution` object containing the itineraries of
+the cars. Works by running a depth-first search, keeping track of visited streets for all cars. If a car
+finishes a branch of the DFS, it takes the shortest path back to the next node with unvisited children
+in its DFS tree.
 """
 function greedy_dfs_solution(city)
 
