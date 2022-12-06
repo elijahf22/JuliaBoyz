@@ -4,7 +4,7 @@ ADD DOCSTRING
 function greedy_dfs_solution(city)
 
     # Stores values for the function
-    visited_streets = Set{Street}()
+    visited_streets = Set{JBStreet}()
     queue = [(city.starting_junction, street) for street in neighbor_streets[city.starting_junction]] # (From, Street)
     itinerary = [[city.starting_junction] for _ in 1:city.nb_cars]
     current_car = 1

@@ -58,7 +58,7 @@ Returns a `Dict` mapping each junction index to a `Vector{Street}` containing al
 function get_adjacent_streets(city)
 
     # Stores templates for lists
-    neighbors = Dict{Int64, Vector{Street}}()
+    neighbors = Dict{Int64, Vector{JBStreet}}()
 
     # Runs through each street and stores adjacency
     for street in city.streets
