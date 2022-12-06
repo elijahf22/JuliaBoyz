@@ -1,8 +1,7 @@
 using Accessors
 using Aqua
 using Documenter
-using HashCode2014
-using .JuliaBoyz
+using JuliaBoyz
 using JuliaFormatter
 using Test
 
@@ -28,7 +27,7 @@ using Test
         city_short = @set city_long.total_duration = 18000
         
         long_start = time_ns()
-        solution1 = .JuliaBoyz.greedy_dfs_solution(city_long)
+        solution1 = JuliaBoyz.greedy_dfs_solution(city_long)
         upper1 = JuliaBoyz.genestarate_upper_bound(solution1.city)
         long_end = time_ns()
         distance1 = JuliaBoyz.solution_distance(solution1)
