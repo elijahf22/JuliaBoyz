@@ -13,9 +13,11 @@ using Test
     end
     =#
     
+    #=
     @testset verbose = true "Code formatting (JuliaFormatter.jl)" begin
         @test format(JuliaBoyz; verbose=true, overwrite=false)
     end
+    =#
     
     @testset verbose = true "Doctests (Documenter.jl)" begin
         doctest(JuliaBoyz)
