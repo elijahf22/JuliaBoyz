@@ -112,7 +112,7 @@ function shortest_path(from, to, neighbor_streets)
         for neighbor_street in get(neighbor_streets, current_junction, nothing)
             
             # Adds the neighbor if unvisited
-            neighbor = HashCode2014.get_street_end(current_junction, neighbor_street)
+            neighbor = JuliaBoyz.get_street_end(neighbor_street, current_junction)
             if !in(neighbor, visited)
                 push!(queue, (cat(current_path, [neighbor]; dims=1), current_duration+neighbor_street.duration))
             end
@@ -120,4 +120,11 @@ function shortest_path(from, to, neighbor_streets)
     end
 
     return nothing
+end
+
+function get_street_end(street, start)
+    if street.endpointA == start
+        return street.endpointB
+    end
+    return street.endpointA
 end

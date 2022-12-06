@@ -1,4 +1,3 @@
-using Accessors
 using Aqua
 using Documenter
 using JuliaBoyz
@@ -23,8 +22,8 @@ using Test
     =#
 
     @testset verbose = true "JuliaBoyz.jl" begin
-        city_long = HashCode2014.read_city()
-        city_short = @set city_long.total_duration = 18000
+        city_long = JuliaBoyz.read_city("test_city_long.txt")
+        city_short = JuliaBoyz.read_city("test_city_short.txt")
         
         long_start = time_ns()
         solution1 = JuliaBoyz.greedy_dfs_solution(city_long)
