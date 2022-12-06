@@ -7,7 +7,7 @@ function read_city(filename)
     num_junctions, num_streets, total_time, fleet_size, start = parse.(
         Int, convert(Vector{String}, split(lines[1]))
         )
-    println(num_junctions)
+
     streets = []
     for i in 1:num_streets
         street_info = parse.(Int, convert(Vector{String}, split(lines[i + num_junctions + 1])))

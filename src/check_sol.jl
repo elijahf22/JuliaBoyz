@@ -6,9 +6,9 @@ is in the adjacency list of the current node, returning false if it is not, and 
 on otherwise. Repeat until the end of the itinerary, and do this for all itineraries in the
 potential solution.
 """
-function check_solution(city, sol)
-    adj_list = generate_adjacency_list(city)  # Dictionary representation of the junctions adjacent to a specified junction
-    for car_itin in sol
+function check_solution(sol::JBSolution)
+    adj_list = generate_adjacency_list(sol.city)  # Dictionary representation of the junctions adjacent to a specified junction
+    for car_itin in sol.itineraries
         for i in 1:(length(car_itin) - 1)
             if !(car_itin[i + 1] in adj_list[car_itin[i]])
                 return false
@@ -19,11 +19,12 @@ function check_solution(city, sol)
 end
 
 """
+    solution_distance(sol)
 Computes the distance covered by all 8 cars.
 """
-function solution_distance(sol)
+function solution_distance(sol::JBSolution)
     distance = 0
-    for street in sol[2]
+    for street in sol.visited_streets
         distance += street.distance
     end
     return distance

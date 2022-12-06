@@ -3,6 +3,7 @@ using Test
 using Aqua
 using HashCode2014
 using Accessors
+using DataStructures
 
 
 println(city.starting_junction)

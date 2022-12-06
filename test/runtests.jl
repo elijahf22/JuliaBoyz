@@ -1,6 +1,6 @@
 using Aqua
 using Documenter
-using JuliaBoyz
+using Main.JuliaBoyz
 using JuliaFormatter
 using Test
 
@@ -22,8 +22,8 @@ using Test
     =#
 
     @testset verbose = true "JuliaBoyz.jl" begin
-        city_long = JuliaBoyz.read_city("test_city_long.txt")
-        city_short = JuliaBoyz.read_city("test_city_short.txt")
+        city_long = Main.JuliaBoyz.read_city("JuliaBoyz/test/test_city_long.txt")
+        city_short = Main.JuliaBoyz.read_city("JuliaBoyz/test/test_city_short.txt")
         
         long_start = time_ns()
         solution1 = JuliaBoyz.greedy_dfs_solution(city_long)

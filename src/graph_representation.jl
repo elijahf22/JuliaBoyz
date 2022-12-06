@@ -38,7 +38,7 @@ Returns a `Dict` mapping each junction index to a `Set{Int64}` containing all ad
 function generate_adjacency_list(city)
 
     # Stores templates for lists
-    neighbors = Dict(vert => Set{Int64}() for vert in 1:length(city.junctions))
+    neighbors = Dict(vert => Set{Int64}() for vert in 1:city.num_junctions)
 
     # Runs through each street and stores adjacency
     for street in city.streets
@@ -62,14 +62,14 @@ function get_adjacent_streets(city)
 
     # Runs through each street and stores adjacency
     for street in city.streets
-        push!(get!(neighbors, street.endpointA, Vector{Street}()), street)
+        push!(get!(neighbors, street.endpointA, Vector{JBStreet}()), street)
         if street.bidirectional
-            push!(get!(neighbors, street.endpointB, Vector{Street}()), street)
+            push!(get!(neighbors, street.endpointB, Vector{JBStreet}()), street)
         end
     end
 
     # Sorts streets by 1/distance
-    for junct in 1:length(city.junctions)
+    for junct in 1:city.num_junctions
         sort!(get(neighbors, junct, nothing); by = street -> 1/street.distance)
     end
 
