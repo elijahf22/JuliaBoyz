@@ -7,6 +7,7 @@ include("check_sol.jl")
 include("graph_representation.jl")
 include("greedy_dfs.jl")
 include("upper_bound.jl")
+include("create_problem.jl")
 
 struct JBStreet
     endpointA::Int64
