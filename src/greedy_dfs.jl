@@ -28,7 +28,7 @@ function greedy_dfs_solution(city)
 
         # Checks if backtracking/using new car
         if last_junction != current_from
-            short_path = shortest_path(last_junction, current_from, get_adjacent_streets(last_junction))
+            short_path = shortest_path(last_junction, current_from, neighbor_streets)
             current_duration += short_path[2]
 
             # Checks if movement does not make car go over its duration
@@ -58,5 +58,5 @@ function greedy_dfs_solution(city)
         queue = cat(valid_neighbors, queue; dims=1)
     end
 
-    return JBSol(city, itinerary, visited_streets)
+    return JBSolution(city, itinerary, visited_streets)
 end

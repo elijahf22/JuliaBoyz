@@ -27,7 +27,7 @@ using Test
         
         long_start = time_ns()
         solution1 = JuliaBoyz.greedy_dfs_solution(city_long)
-        upper1 = JuliaBoyz.genestarate_upper_bound(solution1.city)
+        upper1 = JuliaBoyz.generate_upper_bound(solution1.city)
         long_end = time_ns()
         distance1 = JuliaBoyz.solution_distance(solution1)
         time1 = (long_end - long_start)/10^9
