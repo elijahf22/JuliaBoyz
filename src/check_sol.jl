@@ -20,7 +20,7 @@ function check_solution(sol)
 end
 
 """
-    solution_distance(sol)
+    solution_distance(sol::JBSolution)
 Computes the distance covered by all 8 cars.
 """
 function solution_distance(sol)

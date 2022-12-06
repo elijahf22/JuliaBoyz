@@ -15,25 +15,24 @@ using Test
     @testset verbose = true "Code formatting (JuliaFormatter.jl)" begin
         @test format(JuliaBoyz; verbose=true, overwrite=false)
     end
-
+    =#
     @testset verbose = true "Doctests (Documenter.jl)" begin
         doctest(JuliaBoyz)
     end
-    =#
 
     @testset verbose = true "JuliaBoyz.jl" begin
-        city_long = Main.JuliaBoyz.read_city("test_city_long.txt")
-        city_short = Main.JuliaBoyz.read_city("test_city_short.txt")
+        paris_long = Main.JuliaBoyz.read_city("test_city_long.txt")
+        paris_short = Main.JuliaBoyz.read_city("test_city_short.txt")
         
         long_start = time_ns()
-        solution1 = JuliaBoyz.greedy_dfs_solution(city_long)
+        solution1 = JuliaBoyz.greedy_dfs_solution(paris_long)
         upper1 = JuliaBoyz.generate_upper_bound(solution1.city)
         long_end = time_ns()
         distance1 = JuliaBoyz.solution_distance(solution1)
         time1 = (long_end - long_start)/10^9
 
         short_start = time_ns()
-        solution2 = JuliaBoyz.greedy_dfs_solution(city_short)
+        solution2 = JuliaBoyz.greedy_dfs_solution(paris_short)
         upper2 = JuliaBoyz.generate_upper_bound(solution2.city)
         short_end = time_ns()
         distance2 = JuliaBoyz.solution_distance(solution2)
