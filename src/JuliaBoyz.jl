@@ -1,6 +1,5 @@
 module JuliaBoyz
 
-using HashCode2014
 using SparseArrays
 using DataStructures
 include("check_sol.jl")
