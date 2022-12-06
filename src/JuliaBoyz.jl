@@ -1,6 +1,5 @@
 module JuliaBoyz
 
-using SparseArrays
 using DataStructures
 include("check_sol.jl")
 include("graph_representation.jl")
