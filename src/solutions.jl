@@ -1,5 +1,5 @@
 """
-    check_sol(sol::JBSolution)
+    check_solution(sol::JBSolution)
 Given a city and a potential solution, checks the validity of the solution.
     
 Works by beginning at the first junction in an itinerary and check if the next junction 
@@ -29,4 +29,22 @@ function solution_distance(sol)
         distance += street.distance
     end
     return distance
+end
+
+"""
+    write_solution(sol::JBSolution, filename::String)
+
+Writes a `JBSolution`(@ref) to a text file, named using the provided file name.
+"""
+function write_solution(sol, filename)
+    open(filename, "w") do file
+        write(file, length(sol.itineraries))
+        for car_itin in sol.itineraries
+            itin_len = length(car_itin)
+            write(file, itin_len)
+            for junction_idx in car_itin
+                write(file, junction_idx)
+            end
+        end
+    end
 end
