@@ -89,8 +89,6 @@ function shortest_path(from, to, neighbor_streets)
             end
         end
     end
-
-    return nothing
 end
 
 function get_street_end(street, start)
