@@ -5,10 +5,9 @@ version = "0.1.0"
 
 [deps]
 DataStructures = "864edb3b-99cc-5e75-8d2d-829cb0a9cfe8"
-PackageCompatUI = "65465c31-362d-417a-a2f0-7fa38ae507b9"
-TestEnv = "1e6cf692-eddd-4d53-88a5-2d735e33781b"
 
 [compat]
+DataStructures = "0.18"
 julia = "1.8"
 
 [extras]

@@ -5,29 +5,28 @@ using JuliaFormatter
 using Test
 
 @testset verbose = true "JuliaBoyz.jl" begin
-
     @testset verbose = true "Code quality (Aqua.jl)" begin
         Aqua.test_all(JuliaBoyz; ambiguities=false)
     end
-    
+
     @testset verbose = true "Code formatting (JuliaFormatter.jl)" begin
-        @test format(JuliaBoyz; verbose=true, overwrite=false)
+        @test format(JuliaBoyz; verbose=true, overwrite=true)
     end
-    
+
     @testset verbose = true "Doctests (Documenter.jl)" begin
         doctest(JuliaBoyz)
     end
-    
+
     @testset verbose = true "JuliaBoyz.jl" begin
         paris_long = Main.JuliaBoyz.read_city("test_city_long.txt")
         paris_short = Main.JuliaBoyz.read_city("test_city_short.txt")
-        
+
         long_start = time_ns()
         solution1 = JuliaBoyz.greedy_dfs_solution(paris_long)
         upper1 = JuliaBoyz.generate_upper_bound(solution1.city)
         long_end = time_ns()
         distance1 = JuliaBoyz.solution_distance(solution1)
-        time1 = (long_end - long_start)/10^9
+        time1 = (long_end - long_start) / 10^9
 
         short_start = time_ns()
         solution2 = JuliaBoyz.greedy_dfs_solution(paris_short)
@@ -42,7 +41,7 @@ using Test
         @test upper2 > 0
         @test distance1 <= upper1
         @test distance2 <= upper2
-        
+
         println("\nDoctests:")
         print("54000s distance: ")
         println(distance1)
@@ -58,6 +57,5 @@ using Test
         print("18000s time: ")
         println(time2)
         println()
-        
     end
 end

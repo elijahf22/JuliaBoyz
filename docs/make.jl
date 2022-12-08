@@ -14,12 +14,7 @@ makedocs(;
         edit_link="master",
         assets=String[],
     ),
-    pages=[
-        "Home" => "index.md",
-    ],
+    pages=["Home" => "index.md"],
 )
 
-deploydocs(;
-    repo="github.com/elijahf22/JuliaBoyz.jl",
-    devbranch="main",
-)
+deploydocs(; repo="github.com/elijahf22/JuliaBoyz.jl", devbranch="main")

@@ -47,5 +47,5 @@ function write_solution(sol, filename)
             write(file, "\n", string(junction_idx))
         end
     end
-    close(file)
+    return close(file)
 end

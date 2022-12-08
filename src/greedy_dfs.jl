@@ -10,8 +10,11 @@ function greedy_dfs_solution(city)
     # Stores values for the function
     visited_streets = Set{JBStreet}()
     neighbor_streets = get_adjacent_streets(city)
-    queue = [(city.starting_junction, street) for street in neighbor_streets[city.starting_junction]] # (From, Street)
-    itinerary = [[city.starting_junction] for _ in 1:city.nb_cars]
+    queue = [
+        (city.starting_junction, street) for
+        street in neighbor_streets[city.starting_junction]
+    ] # (From, Street)
+    itinerary = [[city.starting_junction] for _ in 1:(city.nb_cars)]
     current_car = 1
     current_duration = 0
     last_junction = city.starting_junction
@@ -37,7 +40,9 @@ function greedy_dfs_solution(city)
 
             # Checks if movement does not make car go over its duration
             if current_duration <= city.total_duration
-                itinerary[current_car] = cat(itinerary[current_car], short_path[1][2:length(short_path[1])]; dims=1)
+                itinerary[current_car] = cat(
+                    itinerary[current_car], short_path[1][2:length(short_path[1])]; dims=1
+                )
             end
         end
 
@@ -57,8 +62,12 @@ function greedy_dfs_solution(city)
         last_junction = current_to
 
         # Queues every valid street adjacent to the junction currently being traversed to
-        valid_neighbors = [(current_to, neighbor_street) for neighbor_street in neighbor_streets[current_to] if !in(neighbor_street, visited_streets)]
-        sort!(valid_neighbors; by = x -> 1/x[2].distance)
+        valid_neighbors = [
+            (current_to, neighbor_street) for
+            neighbor_street in neighbor_streets[current_to] if
+            !in(neighbor_street, visited_streets)
+        ]
+        sort!(valid_neighbors; by=x -> 1 / x[2].distance)
         queue = cat(valid_neighbors, queue; dims=1)
     end
 

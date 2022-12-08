@@ -6,7 +6,7 @@ Returns a `Dict` mapping each junction index to a `Set{Int64}` containing all ad
 function generate_adjacency_list(city)
 
     # Stores templates for lists
-    neighbors = Dict(vert => Set{Int64}() for vert in 1:city.num_junctions)
+    neighbors = Dict(vert => Set{Int64}() for vert in 1:(city.num_junctions))
 
     # Runs through each street and stores adjacency
     for street in city.streets
@@ -27,7 +27,7 @@ Returns a `Dict` mapping each junction index to a `Vector{Street}` containing al
 function get_adjacent_streets(city)
 
     # Stores templates for lists
-    neighbors = Dict{Int64, Vector{JBStreet}}()
+    neighbors = Dict{Int64,Vector{JBStreet}}()
 
     # Runs through each street and stores adjacency
     for street in city.streets
@@ -38,8 +38,8 @@ function get_adjacent_streets(city)
     end
 
     # Sorts streets by 1/distance
-    for junct in 1:city.num_junctions
-        sort!(get(neighbors, junct, nothing); by = street -> 1/street.distance)
+    for junct in 1:(city.num_junctions)
+        sort!(get(neighbors, junct, nothing); by=street -> 1 / street.distance)
     end
 
     return neighbors
@@ -81,11 +81,17 @@ function shortest_path(from, to, neighbor_streets)
 
         # Adds neighbors to be checked
         for neighbor_street in get(neighbor_streets, current_junction, nothing)
-            
+
             # Adds the neighbor if unvisited
             neighbor = JuliaBoyz.get_street_end(neighbor_street, current_junction)
             if !in(neighbor, visited)
-                push!(queue, (cat(current_path, [neighbor]; dims=1), current_duration+neighbor_street.duration))
+                push!(
+                    queue,
+                    (
+                        cat(current_path, [neighbor]; dims=1),
+                        current_duration + neighbor_street.duration,
+                    ),
+                )
             end
         end
     end

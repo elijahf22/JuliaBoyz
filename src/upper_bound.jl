@@ -7,7 +7,7 @@ streets are traversed.
 function generate_upper_bound(city)
 
     # Prepares values for the function
-    streets = sort(city.streets; by=street -> street.duration/street.distance)
+    streets = sort(city.streets; by=street -> street.duration / street.distance)
     time = 0
     dist = 0
 
@@ -19,11 +19,11 @@ function generate_upper_bound(city)
             time += street.duration
             dist += street.distance
 
-        # Time has run out
+            # Time has run out
         else
             break
         end
     end
-    
+
     return dist
 end
