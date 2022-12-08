@@ -4,7 +4,6 @@ using JuliaBoyz
 using JuliaFormatter
 using Test
 
-
 @testset verbose = true "JuliaBoyz.jl" begin
 
     @testset verbose = true "Code quality (Aqua.jl)" begin
@@ -19,7 +18,6 @@ using Test
         doctest(JuliaBoyz)
     end
     
-
     @testset verbose = true "JuliaBoyz.jl" begin
         paris_long = Main.JuliaBoyz.read_city("test_city_long.txt")
         paris_short = Main.JuliaBoyz.read_city("test_city_short.txt")
@@ -45,6 +43,7 @@ using Test
         @test distance1 <= upper1
         @test distance2 <= upper2
         
+        println("\nDoctests:")
         print("54000s distance: ")
         println(distance1)
         print("54000s upper bound: ")
