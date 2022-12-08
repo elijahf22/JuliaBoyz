@@ -5,7 +5,7 @@ a solution for the Optimization Challenge in C25 (Fall 2022).
 module JuliaBoyz
 
 using DataStructures
-include("check_sol.jl")
+include("solutions.jl")
 include("graph_representation.jl")
 include("greedy_dfs.jl")
 include("upper_bound.jl")
