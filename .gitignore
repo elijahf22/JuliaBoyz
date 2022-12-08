@@ -6,3 +6,4 @@
 /.CondaPkg
 /.vscode
 /test/.CondaPkg
+/test/playground.jl
