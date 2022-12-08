@@ -34,17 +34,18 @@ end
 """
     write_solution(sol::JBSolution, filename::String)
 
-Writes a `JBSolution`(@ref) to a text file, named using the provided file name.
+Writes a `JBSolution`(@ref) to a text file of the Google specified format,
+named using the provided file name.
 """
 function write_solution(sol, filename)
-    open(filename, "w") do file
-        write(file, length(sol.itineraries))
-        for car_itin in sol.itineraries
-            itin_len = length(car_itin)
-            write(file, itin_len)
-            for junction_idx in car_itin
-                write(file, junction_idx)
-            end
+    file = open(filename, "w")
+    write(file, string(length(sol.itineraries)))
+    for car_itin in sol.itineraries
+        itin_len = length(car_itin)
+        write(file, "\n", string(itin_len))
+        for junction_idx in car_itin
+            write(file, "\n", string(junction_idx))
         end
     end
+    close(file)
 end
