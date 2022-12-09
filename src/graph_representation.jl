@@ -21,8 +21,9 @@ end
 
 """
     get_adjacent_streets(city::JBCity)
-Generates an adjacency list for the streets adjacent to all junctions of the currently loaded city to represent the graph.
-Returns a `Dict` mapping each junction index to a `Vector{Street}` containing all its adjacent streets.
+Generates an adjacency list for the streets adjacent to all junctions of the currently loaded city to 
+represent the graph. Returns a `Dict` mapping each junction index to a `Vector{Street}` containing
+all its adjacent streets, with each vector sorted by distance, high to low. 
 """
 function get_adjacent_streets(city)
 
@@ -47,8 +48,8 @@ end
 
 """
     shortest_path(from::Int64, to::Int64, neighbor_streets::Dict{Int64, Set{Int64}})
-Computes the shortest path between two given junctions using Djikstra's algorithm.
-Returns a `Tuple` containing the sequence of junctions (represented by their indices, 
+Computes the shortest path between two given junctions, specified by their indices, using Djikstra's
+algorithm. Returns a `Tuple` containing the sequence of junctions (represented by their indices,
 including the start/finish junctions) that give the shortest path and the duration of the path.
 """
 function shortest_path(from, to, neighbor_streets)
@@ -97,6 +98,11 @@ function shortest_path(from, to, neighbor_streets)
     end
 end
 
+"""
+    get_street_end(street::JBStreet, start::Int64)
+Given a `JBStreet`(@ref) and a junction index, returns the index of the junction at the other end
+of the street.
+"""
 function get_street_end(street, start)
     if street.endpointA == start
         return street.endpointB
