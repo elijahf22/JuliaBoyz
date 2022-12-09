@@ -27,6 +27,7 @@ using Test
         long_end = time_ns()
         distance1 = JuliaBoyz.solution_distance(solution1)
         time1 = (long_end - long_start) / 10^9
+        JuliaBoyz.write_solution(solution1, "test_solution_long.txt")
 
         short_start = time_ns()
         solution2 = JuliaBoyz.greedy_dfs_solution(paris_short)
@@ -34,6 +35,7 @@ using Test
         short_end = time_ns()
         distance2 = JuliaBoyz.solution_distance(solution2)
         time2 = (short_end - short_start) / 10^9
+        JuliaBoyz.write_solution(solution2, "test_solution_short.txt")
 
         @test JuliaBoyz.check_solution(solution1)
         @test JuliaBoyz.check_solution(solution2)
