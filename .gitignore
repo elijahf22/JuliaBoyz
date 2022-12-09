@@ -7,3 +7,5 @@
 /.vscode
 /test/.CondaPkg
 /test/playground.jl
+test/test_solution_long.txt
+test/test_solution_short.txt

@@ -44,7 +44,7 @@ using Test
         @test distance1 <= upper1
         @test distance2 <= upper2
 
-        println("\nDoctests:")
+        println("\nTests:")
         print("54000s distance: ")
         println(distance1)
         print("54000s upper bound: ")
@@ -59,5 +59,19 @@ using Test
         print("18000s time: ")
         println(time2)
         println()
+
+        bad_start_itin = deepcopy(solution1.itineraries)
+        deleteat!(bad_start_itin[1], 1)
+        bad_link_itin = deepcopy(solution1.itineraries)
+        deleteat!(bad_link_itin[1], 3)
+        bad_start_sol = JuliaBoyz.JBSolution(
+            solution1.city, bad_start_itin, solution1.visited_streets
+        )
+        bad_link_sol = JuliaBoyz.JBSolution(
+            solution1.city, bad_link_itin, solution1.visited_streets
+        )
+
+        @test !(JuliaBoyz.check_solution(bad_start_sol))
+        @test !(JuliaBoyz.check_solution(bad_link_sol))
     end
 end

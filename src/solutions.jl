@@ -10,6 +10,9 @@ potential solution.
 function check_solution(sol)
     adj_list = generate_adjacency_list(sol.city)  # Dictionary representation of the junctions adjacent to a specified junction
     for car_itin in sol.itineraries
+        if car_itin[1] != sol.city.starting_junction
+            return false
+        end
         for i in 1:(length(car_itin) - 1)
             if !(car_itin[i + 1] in adj_list[car_itin[i]])
                 return false
